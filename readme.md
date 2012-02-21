@@ -26,22 +26,22 @@ Setup:
 
 * Use the following maven dependency. NOTE: there's no distribution, so for now you'll have to use your local repository.
 
-    <dependency>
-      <groupId>com.villagechief.gwt</groupId>
-      <artifactId>gwt-hogan</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.villagechief.gwt&lt;/groupId&gt;
+      &lt;artifactId&gt;gwt-hogan&lt;/artifactId&gt;
+      &lt;version&gt;${project.version}&lt;/version&gt;
+    &lt;/dependency&gt;
+
 * Add the following to your gwt.xml file:
 
-    <!-- required for gwt-hogan -->
-    <inherits name="com.google.gwt.json.JSON" />
-    <!-- required for doing jquery like expressions --> 
-    <inherits name='com.google.gwt.query.Query'/>
-    <!-- required for passing java objects to templates -->
-    <inherits name="com.google.web.bindery.autobean.AutoBean"/>
-    <!-- include gwt-hogan -->
-    <inherits name="com.villagechief.gwt.hogan.gwtHogan" />
+    &lt;!-- required for gwt-hogan --&gt;
+    &lt;inherits name="com.google.gwt.json.JSON" /&gt;
+    &lt;!-- required for doing jquery like expressions --&gt; 
+    &lt;inherits name='com.google.gwt.query.Query'/&gt;
+    &lt;!-- required for passing java objects to templates --&gt;
+    &lt;inherits name="com.google.web.bindery.autobean.AutoBean"/&gt;
+    &lt;!-- include gwt-hogan --&gt;
+    &lt;inherits name="com.villagechief.gwt.hogan.gwtHogan" /&gt;
 
 The HoganWidget:
 ----------------
@@ -70,7 +70,7 @@ GQuery to provide a selector to the add function which will be the container
 
 MyTemplate.html:
 
-    Click this button: <span id="button"></span>
+    Click this button: &lt;span id="button"&gt;&lt;/span&gt;
     
 MyTemplate.java:
 
@@ -99,7 +99,7 @@ Data object:
 Factory:
 
     public interface TestDataFactory extends AutoBeanFactory {
-    	AutoBean<TestData> data();
+    	AutoBean&lt;TestData&gt; data();
     }
     
 MyTemplate.java:
@@ -125,7 +125,7 @@ A HoganWidget doesn't contain widgets the way a normal GWT Composite widget does
 
 So for a template like:
 
-    Hello <span id="planet"></span>
+    Hello &lt;span id="planet"&gt;&lt;/span&gt;
 
 You can put in your Template widget:
 
