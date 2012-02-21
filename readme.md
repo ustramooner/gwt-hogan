@@ -1,18 +1,17 @@
-![GwtHogan]
-==============
+Gwt Hogan
+=========
 
 Description
 -----------
 
 GwtHogan is a templating solution for GWT.
 
-It changes the Gwt paradigm of widget based code and brings a more familiar jquery + templates approach to coding while maintaining the power of GWT/Java as a strongly typed language and very efficient javascript compiler
-
+It changes the Gwt paradigm of widget based code and brings a more jquery + templates approach to coding while maintaining the power of GWT/Java as a strongly typed language and very efficient javascript compiler
 
 Features
 --------
 
-* Generator which compiles the templates
+* Generator which pre-compiles the templates
 * Can work with Native Java Object data or JSON object data
 * Can manipulate the template and add widgets to the template using GQuery
 
@@ -23,6 +22,8 @@ Getting started
 * Change directory into the examples directory, and run mvn gwt:run
 
 Setup:
+------
+
 * Use the following maven dependency. NOTE: there's no distribution, so for now you'll have to use your local repository.
     <dependency>
       <groupId>com.villagechief.gwt</groupId>
@@ -45,15 +46,18 @@ The HoganWidget:
 A template is made up of 2 components, the html mustache file and a Java class. For example:
 
 MyTemplate.java:
+
     public class MyTemplate extends HoganWidget {
       public Test(){
         addParameter("planet", new JSONString("world"));
       }
     }
 MyTemplate.html:
+
     Hello {{planet}}
 
 MyTemplate can then be used like any other widget. But it MUST be constructed using GWT.create. For example:
+
     MyTemplate myTemplate = GWT.create(MyTemplate.class);
     RootPanel.get().add(myTemplate);
 
@@ -62,8 +66,11 @@ Adding Widgets must be done after the widget is loaded onto the page. You can us
 GQuery to provide a selector to the add function which will be the container
 
 MyTemplate.html:
+
     Click this button: <span id="button"></span>
+    
 MyTemplate.java:
+
     public class MyTemplate extends HoganWidget {
       public void onLoad(){
         super.onLoad();
@@ -80,15 +87,20 @@ See http://code.google.com/p/google-web-toolkit/wiki/AutoBean for more details.
 AutoBeans and *Managed* java objects can be passed as parameters to a HoganWidget
 
 Data object:
+
     public interface TestData {
     	public String getField1();
     	public void setField1(String v);
     }
+    
 Factory:
+
     public interface TestDataFactory extends AutoBeanFactory {
     	AutoBean<TestData> data();
     }
+    
 MyTemplate.java:
+
     public class MyTemplate extends HoganWidget {
       public Test(){
         TestDataFactory beanFactory = GWT.create(TestDataFactory.class);
@@ -98,7 +110,9 @@ MyTemplate.java:
         addParameter("data", test1);
       }
     }
+    
 MyTemplate.html
+
     Field1: {{data.field1}}
 
 
@@ -107,6 +121,7 @@ Event Handling and DOM Handling
 A HoganWidget doesn't contain widgets the way a normal GWT Composite widget does, but you can use GwtQuery to manipulate the DOM.
 
 So for a template like:
+
     Hello <span id="planet"></span>
 
 You can put in your Template widget:
