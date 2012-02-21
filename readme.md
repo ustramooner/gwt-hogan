@@ -25,12 +25,15 @@ Setup:
 ------
 
 * Use the following maven dependency. NOTE: there's no distribution, so for now you'll have to use your local repository.
+
     <dependency>
       <groupId>com.villagechief.gwt</groupId>
       <artifactId>gwt-hogan</artifactId>
       <version>${project.version}</version>
     </dependency>
+    
 * Add the following to your gwt.xml file:
+
     <!-- required for gwt-hogan -->
     <inherits name="com.google.gwt.json.JSON" />
     <!-- required for doing jquery like expressions --> 
@@ -132,7 +135,7 @@ You can put in your Template widget:
     }
 
 References
-..........
+----------
 
 * AutoBeans: http://code.google.com/p/google-web-toolkit/wiki/AutoBean
 * GwtQuery: http://code.google.com/p/gwtquery/wiki/GettingStarted
