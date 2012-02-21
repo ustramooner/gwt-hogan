@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2009-2011 the original author or authors. See the notice.md 
+	file distributed with this work for additional information regarding copyright 
+	ownership. Licensed under the Apache License, Version 2.0 (the "License"); 
+	you may not use this file except in compliance with the License. You may 
+	obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- POM file generated with GWT webAppCreator -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.villagechief.gwt</groupId>
+	<artifactId>gwt-hogan</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>${project.artifactId}</name>
+
+	<parent>
+		<groupId>com.villagechief.gwt</groupId>
+		<artifactId>gwt-hogan-project</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<properties>
+		<!-- GWT needs at least java 1.5 -->
+		<webappDirectory>src/main/webapp</webappDirectory>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- TODO: this seems wrong? -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtVersion}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- support jquery style selectors -->
+		<dependency>
+			<groupId>com.googlecode.gwtquery</groupId>
+			<artifactId>gwtquery</artifactId>
+			<version>${gQueryVersion}</version>
+		</dependency>
+
+		<!-- server side javascript compilation of the hogan templates -->
+		<dependency>
+			<groupId>rhino</groupId>
+			<artifactId>js</artifactId>
+			<version>1.7R2</version>
+		</dependency>
+
+		<!-- requirement of google json, not sure why it's not included -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<!-- Generate compiled stuff in the folder used for developing mode -->
+		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.java</include>
+					<include>**/*.gwt.xml</include>
+					<include>**/*.js</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<!-- Copy static web files before executing gwt:run -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.4.1</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${webappDirectory}/WEB-INF/classes</directory>
+							<includes>
+								<include>**/*.class</include>
+								<include>**/*.xml</include>
+								<include>**/*.js</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

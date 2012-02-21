@@ -1,0 +1,11 @@
+bin/
+*~
+*.launch
+gwt-unitCache*/
+classes/
+deploy/
+target/
+.*
+examples/src/main/webapp/gwtHoganExample/
+examples/src/main/webapp/WEB-INF/lib/
+
