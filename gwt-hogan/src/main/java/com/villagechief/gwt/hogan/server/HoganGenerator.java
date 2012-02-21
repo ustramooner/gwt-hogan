@@ -43,7 +43,11 @@ public class HoganGenerator extends Generator {
 		JClassType classType;
 
 		try {
+			String name = typeName + "Generated";
 			classType = context.getTypeOracle().getType(typeName);
+			SourceWriter src = getSourceWriter(classType, context, logger);
+			if ( src == null )
+				return name;
 
 			// fetch the template;
 			// TODO: make this name configurable some how?
@@ -82,7 +86,6 @@ public class HoganGenerator extends Generator {
 			engine.eval(hoganReader, scriptContext);
 			String template = (String) engine.eval(templatesReader, scriptContext);
 
-			SourceWriter src = getSourceWriter(classType, context, logger);
 
 			src.println("@Override");
 			src.println("protected void onLoad() {");
@@ -109,7 +112,7 @@ public class HoganGenerator extends Generator {
 			src.commit(logger);
 
 			System.out.println("Generating for: " + typeName);
-			return typeName + "Generated";
+			return name;
 
 		} catch ( Throwable e ){
 			logger.log(TreeLogger.ERROR, e.getMessage());

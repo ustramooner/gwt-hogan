@@ -26,7 +26,7 @@
 
 	<!-- Default page to serve -->
 	<welcome-file-list>
-		<welcome-file>gwt-hogan.html</welcome-file>
+		<welcome-file>gwtHogan.html</welcome-file>
 	</welcome-file-list>
 
 </web-app>

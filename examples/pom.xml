@@ -108,7 +108,7 @@
 				<!-- Plugin configuration. There are many available options, see gwt-maven-plugin 
 					documentation at codehaus.org -->
 				<configuration>
-					<runTarget>gwt-hogan.html</runTarget>
+					<runTarget>gwtHogan.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 		            <module>com.villagechief.gwt.hogan.examples.gwtHoganExamples</module>
 				</configuration>
