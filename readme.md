@@ -24,7 +24,7 @@ Getting started
 Setup:
 ------
 
-* Use the following maven dependency. NOTE: there's no distribution, so for now you'll have to use your local repository.
+Use the following maven dependency. NOTE: there's no distribution, so for now you'll have to use your local repository.
 
     &lt;dependency&gt;
       &lt;groupId&gt;com.villagechief.gwt&lt;/groupId&gt;
@@ -32,7 +32,7 @@ Setup:
       &lt;version&gt;${project.version}&lt;/version&gt;
     &lt;/dependency&gt;
 
-* Add the following to your gwt.xml file:
+Add the following to your gwt.xml file:
 
     &lt;!-- required for gwt-hogan --&gt;
     &lt;inherits name="com.google.gwt.json.JSON" /&gt;
